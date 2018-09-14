@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:300,400" rel="stylesheet">
+    <!-- add title + metadesc-->
+    <title></title>
+</head>
+<body>
+
+<style type="text/css">
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+    }
+
+    h1 {
+        margin: 0px;
+        font-size: 12.25em;
+        text-align: left;
+        color: rgb(40,40,40);
+        font-family: 'font/teecup.ttc';
+        font-weight: bold;
+        display:inline-block;
+        padding-top:150px;
+        margin:auto;
+        margin-bottom:30px;
+    }
+
+    h2 {
+        font-family: 'Bree Serif';
+        color:rgb(40,40,40);
+        font-weight: 300;
+        font-size:1.1em;
+        margin-top:70px;
+        letter-spacing: 0.1em;
+    }
+
+
+    h3 {
+        font-family: 'Open Sans';
+        color:rgb(40,40,40);
+        font-weight: 400;
+        font-size:0.90em;
+        margin-top:50px;
+        margin-bottom:30px;
+        color: #b02839;
+    }
+
+    strong {
+        font-size:0.9em;
+    }
+
+    .part6 a {
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+
+
+    a {
+        color:rgb(40,60,222);
+    }
+    a:visited {
+        color:rgb(40,60,222);
+    }
+
+    p {
+        color:rgb(75,75,75);
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+
+    .part1 video {
+        margin-top:40px;
+        margin-bottom:40px;
+    }
+
+
+    #content {
+        width:800px;
+        margin:auto;
+        margin-bottom:55px;
+    }
+
+    .header {
+        margin-bottom:120px;
+    }
+    .header h1 span {
+        height:100%;
+        padding:30px;
+        padding-top:150px;
+    }
+
+    .code {
+        color: rgb(0, 255, 24);
+        background-color: rgb(0, 0, 0);
+        padding: 10px;
+        font-weight: 400;
+        font-family: 'Courier New', 'Open Sans';
+        font-size: 0.6em;
+        border-radius: 4px;
+    }
+
+    .code strong {
+        color: #f7f7f7;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 1.0em;
+    }
+    .code .comments {
+        color: #9f9f9f;
+    }
+
+    .header h1 span:nth-child(2){
+        color:white;
+        background-color:rgb(40,60,222);
+    }
+
+    .part {
+        margin-top: 50px;
+    }
+
+    .part p {
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+
+    .part2 .table_video tr td{
+        background-color:black;
+    }
+
+    tr td {
+        width:50%;
+    }
+
+
+    .part video{
+        width:100%;
+    }
+
+    .part7 table {
+        margin-top: 85px;
+        margin-bottom: 85px;
+    }
+    .part7 tr td img {
+        width:50%;
+        margin: auto;
+        display:block;
+    }
+
+
+    .speed_chart_container {
+        width:90%;
+        margin:auto;
+    }
+
+    .speed_chart_container .chart {
+        margin-top:10px;
+    }
+
+    .legend span{
+        width:48%;
+        display: inline-block;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size:0.8em;
+    }
+
+    .legend .name {
+        text-align: left;
+    }
+
+    .legend .value {
+        text-align: right;
+    }
+
+    .bar_wrapper {
+        background-color: #e3e3e3;
+        height:5px;
+        margin-top:4px;
+    }
+
+    .bar_wrapper .bar{
+        background-color:#283dde;
+        height: 100%;
+    }
+
+
+
+</style>
+
+<!-- Google Analytics -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-125825986-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+
+<div id="content">
+
+
+    <div class="header">
+        <h1><span>fast</span><span>pose</span></h1>
+    </div>
+
+    <div class="part part1">
+        <p>
+            We initiated fastpose to be an open source library that can perform a 2D/3D pose estimation in real time on a CPU.
+            Our requisites indicate that the estimation should be performed on a regular RGB stream for a small number of individuals.
+            With the help of deep learning, we hoped to provide a robust solution compatible with a large variety of situations to satisfy educational and entertainment purposes.<br/>
+        </p>
+
+        <video autoplay="" muted="" playsinline="" loop=""><source src="videos/dance.webm" type="video/webm"></video>
+
+        <p>
+            This chart show the respective time spent in each model for a single batch inference processed
+            over a CPU 2.7 GHz Intel Core i5 (Macbook pro 2015). The overall computation use bbox tracking
+            to further reduce the inference duration.
+            <br/>
+            <br/>
+
+        <div class="speed_chart_container">
+
+            <div class="chart">
+                <div class="legend">
+                    <span class="name">Object detection model</span>
+                    <span class="value">5 fps</span>
+                </div>
+                <div class="bar_wrapper">
+                    <div class="bar" style="width: 86%; overflow: hidden;"></div>
+                </div>
+            </div>
+
+
+            <div class="chart">
+                <div class="legend">
+                    <span class="name">Pose 2D model</span>
+                    <span class="value">55 fps</span>
+                </div>
+                <div class="bar_wrapper">
+                    <div class="bar" style="width: 12%; overflow: hidden;"></div>
+                </div>
+            </div>
+
+
+            <div class="chart">
+                <div class="legend">
+                    <span class="name">Pose 3D model</span>
+                    <span class="value">450 fps</span>
+                </div>
+                <div class="bar_wrapper">
+                    <div class="bar" style="width: 1%; overflow: hidden;"></div>
+                </div>
+            </div>
+
+            <br/>
+            <div class="chart">
+                <div class="legend">
+                    <span class="name">Overall (pose 2d + pose 3d)</span>
+                    <span class="value">54 fps</span>
+                </div>
+                <div class="bar_wrapper">
+                    <div class="bar" style="width: 100%; overflow: hidden;"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        </p>
+
+
+    </div>
+
+
+    <div class="part part2">
+        <h2>GET STARTED</h2>
+
+
+        <h3>1.- Install the dependencies :</h3>
+        <p>
+            Fast pose only requires few dependencies to be executed (tensorflow, pytorch, opencv, matplotlib and requets) and it's implemented under python 3.6.
+            The following commands can be used to build the necessary environment in conda :<br/>
+        </p>
+
+        <div class="code">
+            <span class="comments"># create the environment</span><br/>
+            conda create -n fastpose python=3.6<br/>
+            <br/>
+            <span class="comments"># The both following packages are non-gpu apis</span><br/>
+            conda install -c conda-forge tensorflow<br/>
+            conda install pytorch torchvision -c pytorch<br/>
+            <br/>
+            <span class="comments"># older version of opencv can lead to error (version 3.4.2)</span><br/>
+            conda install opencv<br/>
+            <br/>
+            conda install matplotlib<br/>
+            <br/>
+            conda install requests<br/>
+        </div>
+
+        <h3>2.- Download the project :</h3>
+        <p>
+
+            Download the <a class="reflink" href="https://github.com/Drnoodle/fastpose">project source code</a>
+            and the <a href="https://bitbucket.org/hugo_bonnome/fastpose_parameters/downloads/parameters.zip">parameters archive</a>
+            that embeds the exported graph in .pb (protograph) as well as the training tensorflow checkpoints.
+            When the download is completed, unzip the parameters in the project root's folder.<br/>
+            <br/>
+            By default, the 2D inference is made with the tiny version, the medium version is not fully converged and its just a bit
+            more accurate than the tiny one while decreasing the speed by more than a factor 2. This is why, without any extra work,
+            the selected models do not have to be modified.<br/>
+        </p>
+
+        <h3>3.- Activate the environment</h3>
+
+        <div class="code">
+            source activate fastpose
+        </div>
+
+
+        <h3>4.- Run fastpose</h3>
+
+        <table class="table_video">
+            <tr>
+                <td>
+                    <video autoplay="" muted="" playsinline="" loop=""><source src="videos/terminal.webm" type="video/webm"></video>
+                </td>
+                <td>
+                    <video autoplay="" muted="" playsinline="" loop=""><source src="videos/skate.webm" type="video/webm"></video>
+                </td>
+            </tr>
+        </table>
+
+
+        <p>
+            <strong>2D demo :</strong>
+            Launch the pose estimator by running demo_2d.py in the root folder of the project :
+        </p>
+        <div class="code">python demo_2d.py  [webcam | path_to_video_file]  max_person_threshold</div>
+        <p>
+            <strong>2D/3D demo :</strong>
+            Fastpose also provides a tiny backend working on the loopback to allow better compatibility with other programming languages.
+            To use fastpose in localhost, start backend.py in the root folder of the project :<br/>
+        </p>
+        <div class="code">python backend.py port_number  max_person_threshold</div>
+        <p>
+            frontend_2d.py sends the image to the backend and display the visualization while fronted_3d.py is a 3D vizualisation made in html (D3)
+            that can display the 3D pose estimation performed over the video stream sent by frontend_2d.py.<br/>
+            <br/>
+            <strong>From an external server :</strong>
+            If you need to run the backend script on an external server this unix command redirects the annotation stream
+            into your localhost ip on the port_frontend :<br/>
+        </p>
+        <div class="code">ssh -i ~/.ssh/server_private_key -f user@ip -L port_frontend:localhost:port_backend -N</div>
+
+    </div>
+
+
+    <div class="part part3">
+        <h2>QUICK DIVE</h2>
+
+        <h3>1. Project architecture</h3>
+        <p>
+            <strong>system.interface.py :</strong> <br/>Manages the annotation of new incoming frames by wrapping the required models.<br/>
+            <strong>system.object_detection.interface.py :</strong><br/> Model providing the bounding boxes surrounding every person depicted on a given image (Yolov2).<br/>
+            <strong>system.pose_2d.interface.py :</strong><br/> Model providing the 2d pose estimation from every designated people location.<br/>
+            <strong>system.pose_3d.interface.py :</strong><br/> Model providing the 3d pose estimation from a list of 2d poses.<br/>
+            <strong>training :</strong><br/> Package containing the jupyter notebook used to train the deep learning models.<br/>
+            <strong>utils :</strong><br/> Package containing the base classes required by the system.
+        </p>
+        <h3>2. Notes</h3>
+        <p>
+            Notice that the object detection training script is not provided in the repository.
+            We select the percentage as measurement unit (instead of pixel's position) to simplify compatibility when the image is resized.<br/>
+        </p>
+        <h3>3. Annotation's format</h3>
+        <p>
+            The following dictionary is returned by the system.interface.predict function :<br/>
+            <br/>
+            The python dictionary returned by system.interface.update :<br/>
+        </p>
+
+        <div class="code">
+            {<br/>
+            <strong>id : </strong> The person id<br/>
+            <strong>bbox : </strong> The subject's bounding box (utils.bbox.BBox)<br/>
+            <strong>pose_2d : </strong> The pose 2D (utils.pose.Pose2D)<br/>
+            <strong>pose_3d : </strong> The pose 3D (utils.pose.Pose3D)<br/>
+            <strong>confidence : </strong> The confidence for each 2d pose joints (same order as src.utils.PoseConfig.NAMES)<br/>
+            <strong>hash : </strong> The person hashcode<br/>
+            }<br/>
+        </div>
+
+        <p>
+            The JSON returned by system.interface.jsonify / by the backend script is defined as :
+        </p>
+
+        <div class="code">
+            List<<br/>
+            <strong>id : </strong> The person id<br/>
+            <strong>pose_2d : </strong> Dictionary of joint name => dictionary {x,y} (same joint names as src.utils.PoseConfig.NAMES)<br/>
+            <strong>pose_3d : </strong> The same structure as pose2d with the third dimension (in the subject coordinate)<br/>
+            <strong>confidence : </strong> The confidence for each 2d pose joints (same order as src.utils.PoseConfig.NAMES)<br/>
+            ><br/>
+        </div>
+
+    </div>
+
+
+    <div class="part part4">
+        <h2>METHODOLOGY</h2>
+        <p>
+            The system is implemented in a top-down fashion, this is why an object detection algorithm is executed at first place to find the location and the size of depicted humans bodies.
+            Then the image is cropped around the subjects and exported for a single pose inference. The pose 2d model is largely inspired from "Real-time Human Pose Estimation in the Browser with TensorFlow.js", however, we decided to adopt a top-down approach and we decrease the input size of a custom mobilenet v1 to 144x144 using 50% of the parameters.
+            We finally recover the third dimension from the 2d pose by training a deep feedforward neural network on motion capture data feeding the network with the 2D joints while trying to predict the depth coordinate in the subject coordinate. The object detection model is run in background every second to detect new incoming people
+            while a straightforward but effective bounding box tracking is used to follow persons depicted in scene.<br/>
+            <br/>
+
+            The following charts illustrate the optimization loss on the last 14 days for the 2d pose regressor.
+            The train loss is composed of a classification loss and a regression loss as explained in
+            <a href="https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5">this article</a>
+            while the test loss computes the l2 distance between the prediction and the ground truth joint's positions.
+
+            <br/>
+            <br/>
+            <img src="images/train.png" alt="train loss" style="width:100%"/>
+            <br/>
+            <br/>
+            <img src="images/test.png" alt="test loss" style="width:100%"/>
+
+        </p>
+    </div>
+
+
+    <div class="part part5">
+        <h2>FURTHER IMPROVEMENTS</h2>
+        <p>
+            <strong>1.</strong> The system runs the object detector model in background as long as the number of labeled persons has not reached the maximum person threshold.
+            When the annotator temporarily lost a person, the system will put the person identifier in a pool of available id.
+            By modifying the data structure from a set to a stack, the identity tracking can be easily improved in all the cases where the maximum person threshold isn't reached.
+            By doing so, if a person isn't tracked during 10 frames, the object detector will choose the right id in the pool by selecting the most recent lost id.<br/>
+            <br/>
+            <strong>2.</strong> The object detector is only used to detect new incoming people. A lighter version on tensorflow with SSD instead of YOLOv2 could be implemented
+            to speedup, cleanup and remove one dependency in the project.<br/>
+            <br/>
+            <strong>3.</strong> A model exploiting time series could be trained to further improve the accuracy of the 2d joints at almost no extra cost.
+            A jupiter notebook processing the posetrack dataset is provided as-is in the training directory.<br/>
+        </p>
+    </div>
+
+
+    <div class="part part6">
+        <h2>REFERENCES</h2>
+        <p>
+            <a href="https://arxiv.org/abs/1704.04861">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</a><br/>
+
+            <a href="https://arxiv.org/abs/1705.03098">A simple yet effective baseline for 3d human pose estimation</a><br/>
+
+            <a href="https://pjreddie.com/media/files/papers/yolo.pdf">You Only Look Once: Unified, Real-Time Object Detection</a><br/>
+
+            <a href="https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5">Real-time Human Pose Estimation in the Browser with TensorFlow.js</a><br/>
+
+            <a href="http://cocodataset.org/">Common Objects in Context</a><br/>
+
+            <a href="https://bitbucket.org/hugo_bonnome/fastpose_parameters/downloads/parameters.zip">Fastpose parameters</a><br/>
+
+            <a href="https://github.com/Drnoodle/fastpose">Fastpose repository</a><br/>
+
+
+        </p>
+    </div>
+
+    <div class="part part7">
+        <br/>
+        <br/>
+        <p>
+            Feel free to use, modify, distribute fastpose in personal or commercial projects (Apache License 2.0).
+            Add me on <a href="https://www.linkedin.com/in/hugo-bonnome-6a3b5a159/">linkedin</a> if you want my master thesis or on github for typo, installation's issues or bugs.
+        </p>
+
+        <table>
+            <tr>
+                <td>
+                    <img src="images/crim.jpg" alt="log" />
+                </td>
+                <td>
+                    <img src="images/epfl.png" alt="log" />
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -312,7 +312,7 @@
         <p>
 
             Download the <a class="reflink" href="https://github.com/Drnoodle/fastpose">project source code</a>
-            and the <a href="https://bitbucket.org/hugo_bonnome/fastpose_parameters/downloads/parameters.zip">parameters archive</a>
+            and the <a href="https://bitbucket.org/hugo_bonnome/fastpose_parameters/downloads/parameters.zip">parameter's archive</a>
             that embeds the exported graph in .pb (protograph) as well as the training tensorflow checkpoints.
             When the download is completed, unzip the parameters in the project root's folder.<br/>
             <br/>
@@ -378,12 +378,8 @@
             <strong>training :</strong><br/> Package containing the jupyter notebook used to train the deep learning models.<br/>
             <strong>utils :</strong><br/> Package containing the base classes required by the system.
         </p>
-        <h3>2. Notes</h3>
-        <p>
-            Notice that the object detection training script is not provided in the repository.
-            We select the percentage as measurement unit (instead of pixel's position) to simplify compatibility when the image is resized.<br/>
-        </p>
-        <h3>3. Annotation's format</h3>
+
+        <h3>2. Annotation's format</h3>
         <p>
             The following dictionary is returned by the system.interface.predict function :<br/>
             <br/>
@@ -413,6 +409,9 @@
             <strong>confidence : </strong> The confidence for each 2d pose joints (same order as src.utils.PoseConfig.NAMES)<br/>
             ><br/>
         </div>
+
+        <br/>
+        We select the percentage as measurement unit (instead of pixel's position) to simplify compatibility when the image is resized.<br/>
 
     </div>
 

@@ -105,7 +105,6 @@
     .code strong {
         color: #f7f7f7;
         font-weight: 400;
-        text-transform: uppercase;
         font-size: 1.0em;
     }
     .code .comments {
@@ -354,7 +353,7 @@
         </p>
         <div class="code">python backend.py port_number  max_person_threshold</div>
         <p>
-            frontend_2d.py sends the image to the backend and display the visualization while fronted_3d.py is a 3D vizualisation made in html (D3)
+            frontend_2d.py sends the image to the backend and display the visualization while frontend_3d.py is a 3D visualization made in html (D3)
             that can display the 3D pose estimation performed over the video stream sent by frontend_2d.py.<br/>
             <br/>
             <strong>From an external server :</strong>
@@ -371,7 +370,7 @@
 
         <h3>1. Project architecture</h3>
         <p>
-            <strong>system.interface.py :</strong> <br/>Manages the annotation of new incoming frames by wrapping the required models.<br/>
+            <strong>system.interface.py :</strong> <br/>Manages the annotation of new incoming frames by instantiating the required models.<br/>
             <strong>system.object_detection.interface.py :</strong><br/> Model providing the bounding boxes surrounding every person depicted on a given image (Yolov2).<br/>
             <strong>system.pose_2d.interface.py :</strong><br/> Model providing the 2d pose estimation from every designated people location.<br/>
             <strong>system.pose_3d.interface.py :</strong><br/> Model providing the 3d pose estimation from a list of 2d poses.<br/>
@@ -381,9 +380,8 @@
 
         <h3>2. Annotation's format</h3>
         <p>
-            The following dictionary is returned by the system.interface.predict function :<br/>
+            The following dictionary is returned by system.interface.predict function :<br/>
             <br/>
-            The python dictionary returned by system.interface.update :<br/>
         </p>
 
         <div class="code">
@@ -398,7 +396,7 @@
         </div>
 
         <p>
-            The JSON returned by system.interface.jsonify / by the backend script is defined as :
+            The following JSON is returned by system.interface.jsonify and by the backend script :
         </p>
 
         <div class="code">
@@ -419,10 +417,14 @@
     <div class="part part4">
         <h2>METHODOLOGY</h2>
         <p>
-            The system is implemented in a top-down fashion, this is why an object detection algorithm is executed at first place to find the location and the size of depicted humans bodies.
-            Then the image is cropped around the subjects and exported for a single pose inference. The pose 2d model is largely inspired from "Real-time Human Pose Estimation in the Browser with TensorFlow.js", however, we decided to adopt a top-down approach and we decrease the input size of a custom mobilenet v1 to 144x144 using 50% of the parameters.
-            We finally recover the third dimension from the 2d pose by training a deep feedforward neural network on motion capture data feeding the network with the 2D joints while trying to predict the depth coordinate in the subject coordinate. The object detection model is run in background every second to detect new incoming people
-            while a straightforward but effective bounding box tracking is used to follow persons depicted in scene.<br/>
+            The system is implemented in a top-down fashion, this is why an object detection algorithm is executed at first place
+            to find the location and the size of depicted human bodies.
+            The image is then cropped around the subjects and exported for a single pose inference. The pose 2d model is largely inspired from
+            <a href="https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5">Real-time Human Pose Estimation in the Browser with TensorFlow.js</a>
+                , however, we decided to adopt a top-down approach and we decrease the input size of a custom mobilenet v1 to 144x144 using 50% of the parameters.
+            We finally recover the third dimension from the 2d pose by training a deep feedforward neural network on motion capture data feeding the model with the 2d joints
+            while trying to predict the depth in the subject coordinate. The object detection model is run in background every second to manage new incoming people
+            while a straightforward bounding box tracking is used to follow every persons depicted in scene.<br/>
             <br/>
 
             The following charts illustrate the optimization loss on the last 14 days for the 2d pose regressor.
@@ -444,15 +446,15 @@
     <div class="part part5">
         <h2>FURTHER IMPROVEMENTS</h2>
         <p>
-            <strong>1.</strong> The system runs the object detector model in background as long as the number of labeled persons has not reached the maximum person threshold.
+            <strong>1.</strong> The system runs the object detector model in background as long as the number of labeled persons has not reached the maximum threshold.
             When the annotator temporarily lost a person, the system will put the person identifier in a pool of available id.
             By modifying the data structure from a set to a stack, the identity tracking can be easily improved in all the cases where the maximum person threshold isn't reached.
-            By doing so, if a person isn't tracked during 10 frames, the object detector will choose the right id in the pool by selecting the most recent lost id.<br/>
+            By doing so, if a person detection is lost during k frames, the object detector will choose the right id in the pool by selecting the most recent lost id.<br/>
             <br/>
             <strong>2.</strong> The object detector is only used to detect new incoming people. A lighter version on tensorflow with SSD instead of YOLOv2 could be implemented
             to speedup, cleanup and remove one dependency in the project.<br/>
             <br/>
-            <strong>3.</strong> A model exploiting time series could be trained to further improve the accuracy of the 2d joints at almost no extra cost.
+            <strong>3.</strong> A model exploiting time series could be trained to further improve the accuracy of the 2d joints at almost no extra computational cost.
             A jupiter notebook processing the posetrack dataset is provided as-is in the training directory.<br/>
         </p>
     </div>
@@ -484,7 +486,7 @@
         <br/>
         <p>
             Feel free to use, modify, distribute fastpose in personal or commercial projects (Apache License 2.0).
-            Add me on <a href="https://www.linkedin.com/in/hugo-bonnome-6a3b5a159/">linkedin</a> if you want my master thesis or on github for typo, installation's issues or bugs.
+            Add me on <a href="https://www.linkedin.com/in/hugo-bonnome-6a3b5a159/">linkedin</a> if you want my master thesis or on github for any typo, installation's issues or bugs.
         </p>
 
         <table>

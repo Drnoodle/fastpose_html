@@ -424,7 +424,7 @@
                 , however, we decided to adopt a top-down approach and we decrease the input size of a custom mobilenet v1 to 144x144 using 50% of the parameters.
             We finally recover the third dimension from the 2d pose by training a deep feedforward neural network on motion capture data feeding the model with the 2d joints
             while trying to predict the depth in the subject coordinate. The object detection model is run in background every second to manage new incoming people
-            while a straightforward bounding box tracking is used to follow every persons depicted in scene.<br/>
+            while a straightforward bounding box tracking is used to follow every person depicted in the scene.<br/>
             <br/>
 
             The following charts illustrate the optimization loss on the last 14 days for the 2d pose regressor on a gtx 1080 ti.

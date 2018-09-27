@@ -447,9 +447,8 @@
         <h2>FURTHER IMPROVEMENTS</h2>
         <p>
             <strong>1.</strong> The system runs the object detector model in background as long as the number of labeled persons has not reached the maximum threshold.
-            When the annotator temporarily loses a person, the system will put the person identifier in a pool of available id.
-            By modifying the data structure from a set to a stack, the identity tracking can be easily improved in all the cases where the maximum person threshold isn't reached.
-            By doing so, if a person detection is lost during k frames, the object detector will choose the right id in the pool by selecting the most recent lost id.<br/>
+            When the annotator temporarily loses a person, the system will put the person id in a pool.
+            By modifying the pool data structure from a set to a stack, if a person is lost during k frames, the object detector will choose the right id by selecting the most recent lost id.<br/>
             <br/>
             <strong>2.</strong> The object detector is only used to detect new incoming people. A lighter version on tensorflow with SSD instead of YOLOv2 could be implemented
             to speedup, cleanup and remove one dependency in the project.<br/>

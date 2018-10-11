@@ -221,7 +221,7 @@
         <video autoplay="" muted="" playsinline="" loop=""><source src="videos/dance.webm" type="video/webm"></video>
 
         <p>
-            This chart show the respective time spent in each model for a single batch inference processed
+            This chart shows the respective time spent in each model for a single batch inference processed
             over a CPU 2.7 GHz Intel Core i5 (Macbook pro 2015). The overall computation use bbox tracking
             to further reduce the inference duration.
             <br/>
@@ -353,7 +353,7 @@
         </p>
         <div class="code">python backend.py port_number  max_person_threshold</div>
         <p>
-            frontend_2d.py sends the image to the backend and display the visualization while frontend_3d.html is a 3D visualization made in html (D3)
+            frontend_2d.py sends the image to the backend and displays the visualization while frontend_3d.html is a 3D visualization made in html (D3)
             that can display the 3D pose estimation performed over the video stream sent by frontend_2d.py.<br/>
             <br/>
             <strong>From an external server :</strong>
@@ -419,7 +419,7 @@
         <p>
             The system is implemented in a top-down fashion, this is why an object detection algorithm is executed at first place
             to find the location and the size of depicted human bodies.
-            The image is then cropped around the subjects and exported for a single pose inference. The pose 2d model is largely inspired from
+            The image is then cropped around the subjects and exported for a single pose inference. The 2D pose model is largely inspired from
             <a href="https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5">Real-time Human Pose Estimation in the Browser with TensorFlow.js</a>
                 , however, we decided to adopt a top-down approach and we decrease the input size of a custom mobilenet v1 to 144x144 using 50% of the parameters.
             We finally recover the third dimension from the 2d pose by training a deep feedforward neural network on motion capture data feeding the model with the 2d joints
